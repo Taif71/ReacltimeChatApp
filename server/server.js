@@ -35,6 +35,9 @@ io.on('connection', (socket) => {
 
         // if no error we will do following:
         socket.join(user.room);
+
+        io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+
         callback();  
         // const error = true;
         // if(error) {
@@ -52,6 +55,7 @@ io.on('connection', (socket) => {
         const user = getUser(socket.id); // specific client instance. we also have his id
         
         io.to(user.room).emit('message', { user: user.name, text: message});
+        io.to(user.room).emit('roomData', { room: user.room, text: message});
 
         callback(); // to do sth after the message is sent to the frontend
     });
@@ -60,7 +64,13 @@ io.on('connection', (socket) => {
 
 
     socket.on('disconnect', () => {
-        console.log('User had left!!');
+        //console.log('User had left!!');
+
+        const user = removeUser(socket.id);
+
+        if(user) {
+            io.to(user.room).emit('message', {user: 'admin', text: `${user.name} has left.`})
+        }
     });
 });
 
