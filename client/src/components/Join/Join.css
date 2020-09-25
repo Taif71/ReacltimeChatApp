@@ -1,4 +1,3 @@
-
 html, body {
   font-family: 'Roboto', sans-serif;
   padding: 0;
@@ -70,6 +69,3 @@ html, body {
 button:focus {
   outline: 0;
 }
-
- 
-
