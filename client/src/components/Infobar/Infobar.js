@@ -2,10 +2,10 @@ import React from 'react';
 
 import './Infobar.css';
 
-import closeIcon from "../../icons/closeIcon";
-import onlineIcon from "../../icons/onlineIcon";
+import closeIcon from "../../icons/closeIcon.png";
+import onlineIcon from "../../icons/onlineIcon.png";
 
-const Infobar = ({ room }) => {
+const Infobar = ({ room }) => ( // we're using () here because we are only returning the div below
 
 
     <div className="infoBar">
@@ -19,6 +19,6 @@ const Infobar = ({ room }) => {
             <a href="/"><img src={closeIcon} alt="close image"/></a>
         </div>
     </div>
-}
+)
 
 export default Infobar;

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 // we will use hooks. useEffects is lifecycle methods or sideeffects in functional component inside of hooks
 // 
-import queryString from 'query-string';
+import queryString from 'query-string'; 
 import io from 'socket.io-client';
 
 import './chat.css';
 
-
+import Infobar from '../Infobar/Infobar';
+import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
 
 
 let socket;
@@ -99,6 +101,8 @@ return (
 
 
       <Infobar room={room} /> 
+      <Messages messages={messages}/>
+      <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
     </div>
   </div>
 );
